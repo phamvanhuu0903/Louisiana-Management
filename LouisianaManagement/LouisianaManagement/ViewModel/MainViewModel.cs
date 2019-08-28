@@ -13,6 +13,7 @@ namespace LouisianaManagement.ViewModel
         public bool Isloaded = false;
 
         public ICommand LoadedWindowCommand { get; set; }
+        public ICommand UnitWindowCommand { get; set; }
         public MainViewModel()
         {
             LoadedWindowCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
@@ -21,6 +22,8 @@ namespace LouisianaManagement.ViewModel
                 loginWindow.ShowDialog();
                
             });
+
+            UnitWindowCommand = new RelayCommand<object>((p) => { return true; }, (p) => { UnitWindow Unitwd = new UnitWindow(); Unitwd.ShowDialog(); });
 
         }
     }

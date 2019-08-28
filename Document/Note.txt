@@ -1,0 +1,7 @@
+244, 81, 27 = #F4511B
+16, 32, 39 = #102027
+<i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseMove">
+        		<i:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+</i:Interaction.Triggers>

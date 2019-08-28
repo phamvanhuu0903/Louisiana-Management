@@ -52,3 +52,5 @@ C:\Project\C#\Louisiana-Management\LouisianaManagement\LouisianaManagement\bin\D
 C:\Project\C#\Louisiana-Management\LouisianaManagement\LouisianaManagement\bin\Debug\System.Windows.Interactivity.dll
 C:\Project\C#\Louisiana-Management\LouisianaManagement\LouisianaManagement\bin\Debug\Microsoft.Expression.Interactions.xml
 C:\Project\C#\Louisiana-Management\LouisianaManagement\LouisianaManagement\bin\Debug\System.Windows.Interactivity.xml
+C:\Project\C#\Louisiana-Management\LouisianaManagement\LouisianaManagement\obj\Debug\UnitWindow.g.cs
+C:\Project\C#\Louisiana-Management\LouisianaManagement\LouisianaManagement\obj\Debug\UnitWindow.baml

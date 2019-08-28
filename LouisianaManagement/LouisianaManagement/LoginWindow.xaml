@@ -53,6 +53,8 @@
                     <TextBox materialDesign:HintAssist.Hint="Username"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,22,10,0" 
                          materialDesign:HintAssist.Foreground="#F4511B"
+                         TextElement.FontSize="16"
+                             
       
                         
                          materialDesign:TextFieldAssist.UnderlineBrush="#F4511B"/>
@@ -63,7 +65,7 @@
                                  
       
                         materialDesign:HintAssist.Hint="Password"
-                        
+                        TextElement.FontSize="16"
       
                         materialDesign:HintAssist.Foreground="#F4511B"
       
