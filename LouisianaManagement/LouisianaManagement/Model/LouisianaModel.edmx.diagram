@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="25fd378d6ace4ad285df66060ccd9d2a" Name="Diagram1">
+        <EntityTypeShape EntityType="QUANLY_LOUISIANAModel.CUSTOMER" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLY_LOUISIANAModel.INPUT" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLY_LOUISIANAModel.INPUTINFO" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLY_LOUISIANAModel.OBJECT" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLY_LOUISIANAModel.OUTPUT" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLY_LOUISIANAModel.OUTPUTINFO" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLY_LOUISIANAModel.SUPPLIER" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLY_LOUISIANAModel.UNIT" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLY_LOUISIANAModel.USERROLE" Width="1.5" PointX="8.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLY_LOUISIANAModel.USER" Width="1.5" PointX="11" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="QUANLY_LOUISIANAModel.FK__OUTPUTINF__ID_CU__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLY_LOUISIANAModel.FK__INPUTINFO__ID_IN__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLY_LOUISIANAModel.FK__INPUTINFO__STATU__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLY_LOUISIANAModel.FK__OBJECT__BARCODE__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLY_LOUISIANAModel.FK__OBJECT__ID_SUPPL__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLY_LOUISIANAModel.FK__OUTPUTINF__STATU__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLY_LOUISIANAModel.FK__OUTPUTINF__ID_OU__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLY_LOUISIANAModel.FK__USERS__ID_ROLE__1BFD2C07" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

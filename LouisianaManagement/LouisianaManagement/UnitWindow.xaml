@@ -18,16 +18,16 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Name="mainWindow"
-        Title="UnitWindow" Height="450" Width="600">
-    <Grid>
+        Name="window"
+        Title="Đơn vị" Height="450" Width="600">
+    <Grid Background="#102027">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
-            
+
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <uc:ControlBarUC Tag="{Binding Title, ElementName=mainWindow}"></uc:ControlBarUC>
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=window}"></uc:ControlBarUC>
         </Grid>
         <materialDesign:Card Grid.Row="1" VerticalAlignment="Stretch" Margin="10">
             <Grid>
@@ -37,7 +37,8 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <materialDesign:Card Grid.Row="0" Margin="10">
-                    <TextBox Text="{Binding DisplayName}" materialDesign:HintAssist.Hint="Tên đơn vị"
+                    <TextBox Text="{Binding DISPLAYNAME,UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Tên đơn vị"
+                             Margin="5"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </materialDesign:Card >
                 <materialDesign:Card Grid.Row="1" Margin="10">
@@ -117,12 +118,12 @@
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
-                                    <GridViewColumn Header="Tên đơn vị" DisplayMemberBinding="{Binding DisplayName}"></GridViewColumn>
+                                    <GridViewColumn Header="Tên đơn vị" DisplayMemberBinding="{Binding DISPLAYNAME}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                         </ListView>
                     </ScrollViewer>
-                    
+
                 </materialDesign:Card>
             </Grid>
         </materialDesign:Card>

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QUANLY_LOUISIANAModelStoreContainer" CdmEntityContainer="QUANLY_LOUISIANAEntities">
+    <EntitySetMapping Name="CUSTOMERs">
+      <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.CUSTOMER">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+          <ScalarProperty Name="ADDRESS_SUPPLIER" ColumnName="ADDRESS_SUPPLIER" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="MORE_INFO" ColumnName="MORE_INFO" />
+          <ScalarProperty Name="CONTRACTDATE" ColumnName="CONTRACTDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INPUTs">
+      <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.INPUT">
+        <MappingFragment StoreEntitySet="INPUT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DATETINPUT" ColumnName="DATETINPUT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INPUTINFOes">
+      <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.INPUTINFO">
+        <MappingFragment StoreEntitySet="INPUTINFO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_OBJECT" ColumnName="ID_OBJECT" />
+          <ScalarProperty Name="ID_INPUT" ColumnName="ID_INPUT" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="INPUT_PRICE" ColumnName="INPUT_PRICE" />
+          <ScalarProperty Name="OUTPUT_PRICE" ColumnName="OUTPUT_PRICE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OBJECTs">
+      <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.OBJECT">
+        <MappingFragment StoreEntitySet="OBJECT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+          <ScalarProperty Name="ID_UNIT" ColumnName="ID_UNIT" />
+          <ScalarProperty Name="ID_SUPPLIER" ColumnName="ID_SUPPLIER" />
+          <ScalarProperty Name="QRCODE" ColumnName="QRCODE" />
+          <ScalarProperty Name="BARCODE" ColumnName="BARCODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OUTPUTs">
+      <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.OUTPUT">
+        <MappingFragment StoreEntitySet="OUTPUT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DATETOUTPUT" ColumnName="DATETOUTPUT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OUTPUTINFOes">
+      <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.OUTPUTINFO">
+        <MappingFragment StoreEntitySet="OUTPUTINFO">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_OBJECT" ColumnName="ID_OBJECT" />
+          <ScalarProperty Name="ID_OUTPUT" ColumnName="ID_OUTPUT" />
+          <ScalarProperty Name="ID_CUSTOMER" ColumnName="ID_CUSTOMER" />
+          <ScalarProperty Name="COUNT_OUT" ColumnName="COUNT_OUT" />
+          <ScalarProperty Name="INPUT_PRICE" ColumnName="INPUT_PRICE" />
+          <ScalarProperty Name="OUTPUT_PRICE" ColumnName="OUTPUT_PRICE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUPPLIERs">
+      <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.SUPPLIER">
+        <MappingFragment StoreEntitySet="SUPPLIER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+          <ScalarProperty Name="ADDRESS_SUPPLIER" ColumnName="ADDRESS_SUPPLIER" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="MORE_INFO" ColumnName="MORE_INFO" />
+          <ScalarProperty Name="CONTRACTDATE" ColumnName="CONTRACTDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UNITs">
+      <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.UNIT">
+        <MappingFragment StoreEntitySet="UNIT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERROLEs">
+      <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.USERROLE">
+        <MappingFragment StoreEntitySet="USERROLE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.USER">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="ID_ROLE" ColumnName="ID_ROLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

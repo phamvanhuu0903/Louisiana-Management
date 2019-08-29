@@ -1,0 +1,642 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QUANLY_LOUISIANAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DISPLAYNAME" Type="nvarchar(max)" />
+          <Property Name="ADDRESS_SUPPLIER" Type="nvarchar(max)" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="200" />
+          <Property Name="MORE_INFO" Type="nvarchar(max)" />
+          <Property Name="CONTRACTDATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="INPUT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DATETINPUT" Type="datetime" />
+        </EntityType>
+        <EntityType Name="INPUTINFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ID_OBJECT" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ID_INPUT" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="SOLUONG" Type="int" />
+          <Property Name="INPUT_PRICE" Type="float" />
+          <Property Name="OUTPUT_PRICE" Type="float" />
+          <Property Name="STATUS" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="OBJECT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DISPLAYNAME" Type="nvarchar(max)" />
+          <Property Name="ID_UNIT" Type="int" Nullable="false" />
+          <Property Name="ID_SUPPLIER" Type="int" Nullable="false" />
+          <Property Name="QRCODE" Type="nvarchar(max)" />
+          <Property Name="BARCODE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="OUTPUT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DATETOUTPUT" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OUTPUTINFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ID_OBJECT" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ID_OUTPUT" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ID_CUSTOMER" Type="int" Nullable="false" />
+          <Property Name="COUNT_OUT" Type="int" />
+          <Property Name="INPUT_PRICE" Type="float" />
+          <Property Name="OUTPUT_PRICE" Type="float" />
+          <Property Name="STATUS" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SUPPLIER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DISPLAYNAME" Type="nvarchar(max)" />
+          <Property Name="ADDRESS_SUPPLIER" Type="nvarchar(max)" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="200" />
+          <Property Name="MORE_INFO" Type="nvarchar(max)" />
+          <Property Name="CONTRACTDATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UNIT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DISPLAYNAME" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="USERROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DISPLAYNAME" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DISPLAYNAME" Type="nvarchar(max)" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="PASSWORD" Type="nvarchar(max)" />
+          <Property Name="ID_ROLE" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__INPUTINFO__ID_IN__239E4DCF">
+          <End Role="INPUT" Type="Self.INPUT" Multiplicity="1" />
+          <End Role="INPUTINFO" Type="Self.INPUTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INPUT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INPUTINFO">
+              <PropertyRef Name="ID_INPUT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INPUTINFO__STATU__22AA2996">
+          <End Role="OBJECT" Type="Self.OBJECT" Multiplicity="1" />
+          <End Role="INPUTINFO" Type="Self.INPUTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OBJECT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INPUTINFO">
+              <PropertyRef Name="ID_OBJECT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OBJECT__BARCODE__164452B1">
+          <End Role="UNIT" Type="Self.UNIT" Multiplicity="1" />
+          <End Role="OBJECT" Type="Self.OBJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OBJECT">
+              <PropertyRef Name="ID_UNIT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OBJECT__ID_SUPPL__173876EA">
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="1" />
+          <End Role="OBJECT" Type="Self.OBJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OBJECT">
+              <PropertyRef Name="ID_SUPPLIER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OUTPUTINF__ID_CU__2C3393D0">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="OUTPUTINFO" Type="Self.OUTPUTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OUTPUTINFO">
+              <PropertyRef Name="ID_CUSTOMER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OUTPUTINF__ID_OU__2B3F6F97">
+          <End Role="OUTPUT" Type="Self.OUTPUT" Multiplicity="1" />
+          <End Role="OUTPUTINFO" Type="Self.OUTPUTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OUTPUT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OUTPUTINFO">
+              <PropertyRef Name="ID_OUTPUT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OUTPUTINF__STATU__2A4B4B5E">
+          <End Role="OBJECT" Type="Self.OBJECT" Multiplicity="1" />
+          <End Role="OUTPUTINFO" Type="Self.OUTPUTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OBJECT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OUTPUTINFO">
+              <PropertyRef Name="ID_OBJECT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERS__ID_ROLE__1BFD2C07">
+          <End Role="USERROLE" Type="Self.USERROLE" Multiplicity="1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERROLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="ID_ROLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QUANLY_LOUISIANAModelStoreContainer">
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INPUT" EntityType="Self.INPUT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INPUTINFO" EntityType="Self.INPUTINFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OBJECT" EntityType="Self.OBJECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OUTPUT" EntityType="Self.OUTPUT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OUTPUTINFO" EntityType="Self.OUTPUTINFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUPPLIER" EntityType="Self.SUPPLIER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UNIT" EntityType="Self.UNIT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERROLE" EntityType="Self.USERROLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__INPUTINFO__ID_IN__239E4DCF" Association="Self.FK__INPUTINFO__ID_IN__239E4DCF">
+            <End Role="INPUT" EntitySet="INPUT" />
+            <End Role="INPUTINFO" EntitySet="INPUTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INPUTINFO__STATU__22AA2996" Association="Self.FK__INPUTINFO__STATU__22AA2996">
+            <End Role="OBJECT" EntitySet="OBJECT" />
+            <End Role="INPUTINFO" EntitySet="INPUTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OBJECT__BARCODE__164452B1" Association="Self.FK__OBJECT__BARCODE__164452B1">
+            <End Role="UNIT" EntitySet="UNIT" />
+            <End Role="OBJECT" EntitySet="OBJECT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OBJECT__ID_SUPPL__173876EA" Association="Self.FK__OBJECT__ID_SUPPL__173876EA">
+            <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+            <End Role="OBJECT" EntitySet="OBJECT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OUTPUTINF__ID_CU__2C3393D0" Association="Self.FK__OUTPUTINF__ID_CU__2C3393D0">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="OUTPUTINFO" EntitySet="OUTPUTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OUTPUTINF__ID_OU__2B3F6F97" Association="Self.FK__OUTPUTINF__ID_OU__2B3F6F97">
+            <End Role="OUTPUT" EntitySet="OUTPUT" />
+            <End Role="OUTPUTINFO" EntitySet="OUTPUTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OUTPUTINF__STATU__2A4B4B5E" Association="Self.FK__OUTPUTINF__STATU__2A4B4B5E">
+            <End Role="OBJECT" EntitySet="OBJECT" />
+            <End Role="OUTPUTINFO" EntitySet="OUTPUTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERS__ID_ROLE__1BFD2C07" Association="Self.FK__USERS__ID_ROLE__1BFD2C07">
+            <End Role="USERROLE" EntitySet="USERROLE" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QUANLY_LOUISIANAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DISPLAYNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS_SUPPLIER" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MORE_INFO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CONTRACTDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="OUTPUTINFOes" Relationship="Self.FK__OUTPUTINF__ID_CU__2C3393D0" FromRole="CUSTOMER" ToRole="OUTPUTINFO" />
+        </EntityType>
+        <EntityType Name="INPUT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DATETINPUT" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="INPUTINFOes" Relationship="Self.FK__INPUTINFO__ID_IN__239E4DCF" FromRole="INPUT" ToRole="INPUTINFO" />
+        </EntityType>
+        <EntityType Name="INPUTINFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_OBJECT" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_INPUT" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SOLUONG" Type="Int32" />
+          <Property Name="INPUT_PRICE" Type="Double" />
+          <Property Name="OUTPUT_PRICE" Type="Double" />
+          <Property Name="STATUS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="INPUT" Relationship="Self.FK__INPUTINFO__ID_IN__239E4DCF" FromRole="INPUTINFO" ToRole="INPUT" />
+          <NavigationProperty Name="OBJECT" Relationship="Self.FK__INPUTINFO__STATU__22AA2996" FromRole="INPUTINFO" ToRole="OBJECT" />
+        </EntityType>
+        <EntityType Name="OBJECT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DISPLAYNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ID_UNIT" Type="Int32" Nullable="false" />
+          <Property Name="ID_SUPPLIER" Type="Int32" Nullable="false" />
+          <Property Name="QRCODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BARCODE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="INPUTINFOes" Relationship="Self.FK__INPUTINFO__STATU__22AA2996" FromRole="OBJECT" ToRole="INPUTINFO" />
+          <NavigationProperty Name="UNIT" Relationship="Self.FK__OBJECT__BARCODE__164452B1" FromRole="OBJECT" ToRole="UNIT" />
+          <NavigationProperty Name="SUPPLIER" Relationship="Self.FK__OBJECT__ID_SUPPL__173876EA" FromRole="OBJECT" ToRole="SUPPLIER" />
+          <NavigationProperty Name="OUTPUTINFOes" Relationship="Self.FK__OUTPUTINF__STATU__2A4B4B5E" FromRole="OBJECT" ToRole="OUTPUTINFO" />
+        </EntityType>
+        <EntityType Name="OUTPUT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DATETOUTPUT" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="OUTPUTINFOes" Relationship="Self.FK__OUTPUTINF__ID_OU__2B3F6F97" FromRole="OUTPUT" ToRole="OUTPUTINFO" />
+        </EntityType>
+        <EntityType Name="OUTPUTINFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_OBJECT" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_OUTPUT" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_CUSTOMER" Type="Int32" Nullable="false" />
+          <Property Name="COUNT_OUT" Type="Int32" />
+          <Property Name="INPUT_PRICE" Type="Double" />
+          <Property Name="OUTPUT_PRICE" Type="Double" />
+          <Property Name="STATUS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__OUTPUTINF__ID_CU__2C3393D0" FromRole="OUTPUTINFO" ToRole="CUSTOMER" />
+          <NavigationProperty Name="OBJECT" Relationship="Self.FK__OUTPUTINF__STATU__2A4B4B5E" FromRole="OUTPUTINFO" ToRole="OBJECT" />
+          <NavigationProperty Name="OUTPUT" Relationship="Self.FK__OUTPUTINF__ID_OU__2B3F6F97" FromRole="OUTPUTINFO" ToRole="OUTPUT" />
+        </EntityType>
+        <EntityType Name="SUPPLIER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DISPLAYNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS_SUPPLIER" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MORE_INFO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CONTRACTDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="OBJECTs" Relationship="Self.FK__OBJECT__ID_SUPPL__173876EA" FromRole="SUPPLIER" ToRole="OBJECT" />
+        </EntityType>
+        <EntityType Name="UNIT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DISPLAYNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OBJECTs" Relationship="Self.FK__OBJECT__BARCODE__164452B1" FromRole="UNIT" ToRole="OBJECT" />
+        </EntityType>
+        <EntityType Name="USERROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DISPLAYNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="USERS" Relationship="Self.FK__USERS__ID_ROLE__1BFD2C07" FromRole="USERROLE" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DISPLAYNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="USERNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ID_ROLE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="USERROLE" Relationship="Self.FK__USERS__ID_ROLE__1BFD2C07" FromRole="USERS" ToRole="USERROLE" />
+        </EntityType>
+        <Association Name="FK__OUTPUTINF__ID_CU__2C3393D0">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="OUTPUTINFO" Type="Self.OUTPUTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OUTPUTINFO">
+              <PropertyRef Name="ID_CUSTOMER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INPUTINFO__ID_IN__239E4DCF">
+          <End Role="INPUT" Type="Self.INPUT" Multiplicity="1" />
+          <End Role="INPUTINFO" Type="Self.INPUTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INPUT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INPUTINFO">
+              <PropertyRef Name="ID_INPUT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INPUTINFO__STATU__22AA2996">
+          <End Role="OBJECT" Type="Self.OBJECT" Multiplicity="1" />
+          <End Role="INPUTINFO" Type="Self.INPUTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OBJECT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INPUTINFO">
+              <PropertyRef Name="ID_OBJECT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OBJECT__BARCODE__164452B1">
+          <End Role="UNIT" Type="Self.UNIT" Multiplicity="1" />
+          <End Role="OBJECT" Type="Self.OBJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OBJECT">
+              <PropertyRef Name="ID_UNIT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OBJECT__ID_SUPPL__173876EA">
+          <End Role="SUPPLIER" Type="Self.SUPPLIER" Multiplicity="1" />
+          <End Role="OBJECT" Type="Self.OBJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUPPLIER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OBJECT">
+              <PropertyRef Name="ID_SUPPLIER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OUTPUTINF__STATU__2A4B4B5E">
+          <End Role="OBJECT" Type="Self.OBJECT" Multiplicity="1" />
+          <End Role="OUTPUTINFO" Type="Self.OUTPUTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OBJECT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OUTPUTINFO">
+              <PropertyRef Name="ID_OBJECT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OUTPUTINF__ID_OU__2B3F6F97">
+          <End Role="OUTPUT" Type="Self.OUTPUT" Multiplicity="1" />
+          <End Role="OUTPUTINFO" Type="Self.OUTPUTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OUTPUT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OUTPUTINFO">
+              <PropertyRef Name="ID_OUTPUT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERS__ID_ROLE__1BFD2C07">
+          <End Role="USERROLE" Type="Self.USERROLE" Multiplicity="1" />
+          <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERROLE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="ID_ROLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QUANLY_LOUISIANAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
+          <EntitySet Name="INPUTs" EntityType="Self.INPUT" />
+          <EntitySet Name="INPUTINFOes" EntityType="Self.INPUTINFO" />
+          <EntitySet Name="OBJECTs" EntityType="Self.OBJECT" />
+          <EntitySet Name="OUTPUTs" EntityType="Self.OUTPUT" />
+          <EntitySet Name="OUTPUTINFOes" EntityType="Self.OUTPUTINFO" />
+          <EntitySet Name="SUPPLIERs" EntityType="Self.SUPPLIER" />
+          <EntitySet Name="UNITs" EntityType="Self.UNIT" />
+          <EntitySet Name="USERROLEs" EntityType="Self.USERROLE" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <AssociationSet Name="FK__OUTPUTINF__ID_CU__2C3393D0" Association="Self.FK__OUTPUTINF__ID_CU__2C3393D0">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+            <End Role="OUTPUTINFO" EntitySet="OUTPUTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INPUTINFO__ID_IN__239E4DCF" Association="Self.FK__INPUTINFO__ID_IN__239E4DCF">
+            <End Role="INPUT" EntitySet="INPUTs" />
+            <End Role="INPUTINFO" EntitySet="INPUTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INPUTINFO__STATU__22AA2996" Association="Self.FK__INPUTINFO__STATU__22AA2996">
+            <End Role="OBJECT" EntitySet="OBJECTs" />
+            <End Role="INPUTINFO" EntitySet="INPUTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OBJECT__BARCODE__164452B1" Association="Self.FK__OBJECT__BARCODE__164452B1">
+            <End Role="UNIT" EntitySet="UNITs" />
+            <End Role="OBJECT" EntitySet="OBJECTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OBJECT__ID_SUPPL__173876EA" Association="Self.FK__OBJECT__ID_SUPPL__173876EA">
+            <End Role="SUPPLIER" EntitySet="SUPPLIERs" />
+            <End Role="OBJECT" EntitySet="OBJECTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OUTPUTINF__STATU__2A4B4B5E" Association="Self.FK__OUTPUTINF__STATU__2A4B4B5E">
+            <End Role="OBJECT" EntitySet="OBJECTs" />
+            <End Role="OUTPUTINFO" EntitySet="OUTPUTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OUTPUTINF__ID_OU__2B3F6F97" Association="Self.FK__OUTPUTINF__ID_OU__2B3F6F97">
+            <End Role="OUTPUT" EntitySet="OUTPUTs" />
+            <End Role="OUTPUTINFO" EntitySet="OUTPUTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERS__ID_ROLE__1BFD2C07" Association="Self.FK__USERS__ID_ROLE__1BFD2C07">
+            <End Role="USERROLE" EntitySet="USERROLEs" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QUANLY_LOUISIANAModelStoreContainer" CdmEntityContainer="QUANLY_LOUISIANAEntities">
+          <EntitySetMapping Name="CUSTOMERs">
+            <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+                <ScalarProperty Name="ADDRESS_SUPPLIER" ColumnName="ADDRESS_SUPPLIER" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="MORE_INFO" ColumnName="MORE_INFO" />
+                <ScalarProperty Name="CONTRACTDATE" ColumnName="CONTRACTDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INPUTs">
+            <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.INPUT">
+              <MappingFragment StoreEntitySet="INPUT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DATETINPUT" ColumnName="DATETINPUT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INPUTINFOes">
+            <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.INPUTINFO">
+              <MappingFragment StoreEntitySet="INPUTINFO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_OBJECT" ColumnName="ID_OBJECT" />
+                <ScalarProperty Name="ID_INPUT" ColumnName="ID_INPUT" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="INPUT_PRICE" ColumnName="INPUT_PRICE" />
+                <ScalarProperty Name="OUTPUT_PRICE" ColumnName="OUTPUT_PRICE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OBJECTs">
+            <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.OBJECT">
+              <MappingFragment StoreEntitySet="OBJECT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+                <ScalarProperty Name="ID_UNIT" ColumnName="ID_UNIT" />
+                <ScalarProperty Name="ID_SUPPLIER" ColumnName="ID_SUPPLIER" />
+                <ScalarProperty Name="QRCODE" ColumnName="QRCODE" />
+                <ScalarProperty Name="BARCODE" ColumnName="BARCODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OUTPUTs">
+            <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.OUTPUT">
+              <MappingFragment StoreEntitySet="OUTPUT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DATETOUTPUT" ColumnName="DATETOUTPUT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OUTPUTINFOes">
+            <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.OUTPUTINFO">
+              <MappingFragment StoreEntitySet="OUTPUTINFO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_OBJECT" ColumnName="ID_OBJECT" />
+                <ScalarProperty Name="ID_OUTPUT" ColumnName="ID_OUTPUT" />
+                <ScalarProperty Name="ID_CUSTOMER" ColumnName="ID_CUSTOMER" />
+                <ScalarProperty Name="COUNT_OUT" ColumnName="COUNT_OUT" />
+                <ScalarProperty Name="INPUT_PRICE" ColumnName="INPUT_PRICE" />
+                <ScalarProperty Name="OUTPUT_PRICE" ColumnName="OUTPUT_PRICE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUPPLIERs">
+            <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.SUPPLIER">
+              <MappingFragment StoreEntitySet="SUPPLIER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+                <ScalarProperty Name="ADDRESS_SUPPLIER" ColumnName="ADDRESS_SUPPLIER" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="MORE_INFO" ColumnName="MORE_INFO" />
+                <ScalarProperty Name="CONTRACTDATE" ColumnName="CONTRACTDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UNITs">
+            <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.UNIT">
+              <MappingFragment StoreEntitySet="UNIT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERROLEs">
+            <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.USERROLE">
+              <MappingFragment StoreEntitySet="USERROLE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="QUANLY_LOUISIANAModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="ID_ROLE" ColumnName="ID_ROLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
